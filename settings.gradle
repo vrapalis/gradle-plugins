@@ -26,4 +26,4 @@ dependencyResolutionManagement {
 
 includeBuild("../gradle-platforms")
 
-include(":commons-plugin")
+include("commons-plugin", "spring-application-plugin", "spring-library-plugin")

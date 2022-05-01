@@ -41,9 +41,9 @@ java {
 }
 
 dependencies {
-    implementation(platform('io.github.vrapalis.gradle.platforms:application-platform'))
-    implementation(platform('io.github.vrapalis.gradle.platforms:test-platform'))
-    testImplementation('org.junit.jupiter:junit-jupiter')
+    implementation(platform("io.github.vrapalis.gradle.platforms:application-platform"))
+    implementation(platform("io.github.vrapalis.gradle.platforms:test-platform"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
 }
 
 tasks.named("test") {

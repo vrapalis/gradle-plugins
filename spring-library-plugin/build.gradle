@@ -1,0 +1,9 @@
+plugins {
+    id "groovy-gradle-plugin"
+}
+
+dependencies {
+    api platform("io.github.vrapalis.gradle.platforms:plugin-platform")
+    implementation project(":commons-plugin")
+    implementation "org.springframework.boot:org.springframework.boot.gradle.plugin"
+}
