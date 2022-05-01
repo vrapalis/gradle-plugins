@@ -1,0 +1,51 @@
+/**
+ * Common gradle plugin for java projects
+ */
+
+plugins {
+    /**
+     * Java library plugin can be used to declare dependencies (api/implementation),
+     * api to export dependencies from api-library,
+     * implementation to use dependencies internal in the api-library which will be not transitively exposed
+     */
+    id "java-library"
+
+    /**
+     * Jacoco plugin for code test coverage
+     */
+    id "io.github.vrapalis.gradle.plugins.commons.jacoco"
+
+    /**
+     * Checkstyle plugin for java code standards
+     */
+    id "io.github.vrapalis.gradle.plugins.commons.checkstyle"
+    /**
+     * PMD plugin for code analyzing
+     */
+    id "io.github.vrapalis.gradle.plugins.commons.pmd"
+}
+
+repositories {
+    mavenCentral()
+}
+
+java {
+
+    /**
+     * Java version for gradle execution environment
+     */
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+        vendor = JvmVendorSpec.ORACLE
+    }
+}
+
+dependencies {
+    implementation(platform('io.github.vrapalis.gradle.platforms:application-platform'))
+    implementation(platform('io.github.vrapalis.gradle.platforms:test-platform'))
+    testImplementation('org.junit.jupiter:junit-jupiter')
+}
+
+tasks.named("test") {
+    useJUnitPlatform()
+}

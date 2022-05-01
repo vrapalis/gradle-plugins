@@ -1,0 +1,14 @@
+/**
+ * PMD plugin for code analyzing (unused imports and so on ....)
+ */
+plugins {
+    id 'pmd'
+}
+
+pmd {
+    consoleOutput = true
+    toolVersion = "6.44.0"
+    rulesMinimumPriority = 5
+    ruleSetFiles = files("config/pmd/pmd-custom.xml")
+    ruleSets = []
+}

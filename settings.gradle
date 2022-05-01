@@ -1,0 +1,29 @@
+dependencyResolutionManagement {
+    repositories {
+        mavenCentral()
+        gradlePluginPortal()
+        google()
+    }
+}
+
+rootProject.name = "gradle-plugins"
+
+dependencyResolutionManagement {
+    repositories {
+        mavenLocal()
+    }
+
+    versionCatalogs {
+        libs {
+            from(files("../gradle-catalogs/libs.versions.toml"))
+
+            // IF CATALOG WILL BE PUSHED TO REPOSITORY
+            // from("io.github.vrapalis:gradle-catalogs:0.0.1")
+        }
+    }
+}
+
+
+includeBuild("../gradle-platforms")
+
+include(":commons-plugin")

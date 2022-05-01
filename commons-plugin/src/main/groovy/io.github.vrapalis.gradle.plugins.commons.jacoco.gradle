@@ -1,0 +1,43 @@
+/**
+ * Jacoco plugin for code coverage
+ */
+plugins {
+    id('jacoco')
+}
+
+jacoco {
+    toolVersion = "0.8.7"
+}
+
+test {
+    finalizedBy jacocoTestReport // report is always generated after tests run
+}
+
+jacocoTestReport {
+    dependsOn test // tests are required to run before generating the report
+
+    reports {
+        xml.required = false
+        csv.required = false
+        html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
+    }
+}
+
+/*
+// Should be configured by imported plugin project
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            enabled = true
+            element = 'CLASS' // BUNDLE,PACKAGE,CLASS,SOURCEFILE,METHOD
+            includes = ['com.example.*']
+            excludes = ['com.example.Main']
+
+            limit {
+                counter = 'LINE' // INSTRUCTION,LINE,BRANCH,COMPLEXITY,METHOD,CLASS
+                value = 'COVEREDRATIO' // TOTALCOUNT,COVEREDCOUNT,MISSEDCOUND,COVEREDRATIO,MISSEDRATIO
+                minimum = 0.3
+            }
+        }
+    }
+}*/

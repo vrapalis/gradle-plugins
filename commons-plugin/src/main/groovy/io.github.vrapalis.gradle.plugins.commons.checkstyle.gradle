@@ -1,0 +1,22 @@
+/**
+ * Checkstyle plugin to check code for the java standards
+ */
+plugins {
+    id "checkstyle"
+}
+
+def configDir = "${project.rootDir}/config"
+
+checkstyle {
+    toolVersion '10.2'
+    configFile file("$configDir/checkstyle/checkstyle.xml")
+    configProperties.checkstyleSuppressionsPath = file("$configDir/checkstyle/suppressions.xml").absolutePath
+}
+
+checkstyleMain {
+    source ='src/main/java'
+}
+
+checkstyleTest {
+    source ='src/test/java'
+}
