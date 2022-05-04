@@ -43,7 +43,20 @@ java {
 dependencies {
     implementation(platform("io.github.vrapalis.gradle.platforms:application-platform"))
     implementation(platform("io.github.vrapalis.gradle.platforms:test-platform"))
+
     testImplementation("org.junit.jupiter:junit-jupiter")
+
+    implementation libs.spring.boot.validation
+    testImplementation libs.spring.boot.test
+
+    compileOnly libs.lombok
+    annotationProcessor libs.lombok
+    testCompileOnly libs.lombok
+    testAnnotationProcessor libs.lombok
+
+    implementation libs.mapstruct
+    annotationProcessor libs.mapstruct
+    testAnnotationProcessor libs.mapstruct
 }
 
 tasks.named("test") {
