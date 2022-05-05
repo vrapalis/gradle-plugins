@@ -5,10 +5,12 @@ plugins {
     id 'pmd'
 }
 
+def configDir = "${project.rootDir}/config"
+
 pmd {
     consoleOutput = true
     toolVersion = "6.44.0"
     rulesMinimumPriority = 5
-    ruleSetFiles = files("config/pmd/pmd-custom.xml")
+    ruleSetFiles = files("$configDir/pmd/pmd-custom.xml")
     ruleSets = []
 }

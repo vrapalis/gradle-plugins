@@ -1,0 +1,7 @@
+plugins {
+    id "groovy-gradle-plugin"
+}
+
+dependencies {
+    implementation 'com.bmuschko:gradle-docker-plugin:7.3.0'
+}
