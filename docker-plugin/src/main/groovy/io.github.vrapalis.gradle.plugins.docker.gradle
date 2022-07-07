@@ -5,14 +5,24 @@ plugins {
 
 afterEvaluate {
     docker {
+        registryCredentials {
+            url = dockerUrl
+            username = dockerUserName
+            password = dockerPassword
+            email = dockerEmail
+        }
+
         springBootApplication {
-            baseImage = 'openjdk:18-alpine'
-            ports = [9090, 8080]
-            images = ['awesome-spring-boot:latest']
-            jvmArgs = ['-Dspring.profiles.active=production', '-Xmx2048m']
+            baseImage = project.dockerBaseImage
+            images = ["${project.group}.${project.name}:${project.version}"]
+
+            if (project.hasProperty("dockerPorts")) {
+                ports = project.dockerPorts
+            }
+
+            if (project.hasProperty("dockerJvmArgs")) {
+                jvmArgs = project.dockerJvmArgs
+            }
         }
     }
-}
-
-dependencies {
 }
